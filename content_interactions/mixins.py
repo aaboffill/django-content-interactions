@@ -267,6 +267,21 @@ class RateableMixin(ContentInteractionMixin):
         _edges = graph.edge_range(self, rated_by_edge(), 0, self.ratings, self.get_site())
         return len([_edge for _edge in _edges if _edge[ATTRIBUTES_INDEX]['rating'] == rating_value])
 
+    def rating_of_one(self):
+        return self.rating_of(1)
+
+    def rating_of_two(self):
+        return self.rating_of(2)
+
+    def rating_of_three(self):
+        return self.rating_of(3)
+
+    def rating_of_four(self):
+        return self.rating_of(4)
+
+    def rating_of_five(self):
+        return self.rating_of(5)
+
     def rating(self, user):
         _edge = graph.edge_get(self, rated_by_edge(), user, self.get_site())
         return _edge.attributes['rating'] if _edge is not None else None
@@ -275,7 +290,8 @@ class RateableMixin(ContentInteractionMixin):
         _edge = graph.edge_get(self, rated_by_edge(), user, self.get_site())
         return (
             _edge.attributes['rating'] if _edge is not None else None,
-            _edge.attributes['comment'] if _edge is not None else None
+            _edge.attributes['comment'] if _edge is not None else None,
+            _edge.time
         )
 
     def rated_by(self, user):

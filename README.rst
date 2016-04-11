@@ -8,6 +8,10 @@ Like, Mark as Favorite, Rate, Share, Denounce...
 
 Changelog
 =========
+0.8.1
+-----
++ Added common methods to 'RateableMixin' class
+
 0.7.2
 -----
 + Removed unused method 'get_absolute_url' from 'Comment' model class
